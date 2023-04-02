@@ -10,5 +10,5 @@ class SlideshowModel extends Model
     use HasFactory;
     protected $table = 'slideshows';
     protected $primaryKey = 'id';
-    protected $fillable = ['title','subtitle','text','link','enabled','img','order'];
+    protected $fillable = ['title_en','subtitle_en','text_en','title_kh','subtitle_kh','text_kh','link','enabled','img','order'];
 }

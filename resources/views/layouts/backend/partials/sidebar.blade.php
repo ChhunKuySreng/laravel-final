@@ -9,7 +9,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-                @include('layouts.backend.partails.menu')
+                @include('layouts.backend.partials.menu')
             </ul>
         </nav>
     </div>

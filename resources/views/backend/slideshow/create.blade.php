@@ -17,7 +17,7 @@
                             <div class="card-header">
                                 <div class="d-flex">
                                     <h3 class="card-title flex-grow-1">Create Slide Show</h3>
-                                    <a class="btn btn-primary" href="/adminpanel/slideshow"><i
+                                    <a class="btn btn-primary" href="{{url('slideshow')}}"><i
                                             class="fas fa-arrow-left"></i> Back</a>
                                 </div>
                             </div>

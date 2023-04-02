@@ -37,9 +37,10 @@
                                             <td>{{ $slideshow->title_kh }}</td>
                                             <td>{{ $slideshow->subtitle_en }}</td>
                                             <td>{{ $slideshow->subtitle_kh }}</td>
-                                            <td>{{ $slideshow->text_en }}</td>
-                                            <td>{{ $slideshow->text_kh }}</td>
-                                            <td><a href="{{ $slideshow->link }}">{{ $slideshow->link }}</a></td>
+                                            <td>{{ Str::limit($slideshow->text_en, 20) }}</td>
+                                            <td>{{ Str::limit($slideshow->text_kh, 20) }}</td>
+                                            <td><a href="{{ $slideshow->link }}">{{ Str::limit($slideshow->link, 20) }}</a>
+                                            </td>
                                             <td style="width: 5%"><img class="img-fluid img-thumbnail"
                                                     src="/imageslideshow/{{ $slideshow->img }}"
                                                     alt="{{ $slideshow->img }}"></td>
