@@ -11,3 +11,21 @@
         <p>Slideshow</p>
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{ url('product') }}" class="nav-link {{ Request::is('product') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-boxes-stacked"></i>
+        <p>Product</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{ url('category') }}" class="nav-link {{ Request::is('category') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-list"></i>
+        <p>Category</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{ url('user') }}" class="nav-link {{ Request::is('user') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-user"></i>
+        <p>User</p>
+    </a>
+</li>

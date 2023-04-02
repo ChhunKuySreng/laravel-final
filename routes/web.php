@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SlideshowController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +26,26 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 //Slideshow View
 Route::resource('slideshow', SlideshowController::class);
-//Slideshow Order
+//Slideshow Order & Enabled
 Route::get('/{id},{command},{order}', [SlideshowController::class, 'custom'])->name('slideshow.custom');
 //Slideshow Delete
 Route::get('delete-slideshow/{id}', [SlideshowController::class, 'destroy'])->name('slideshow.destroy');
+
+//Product View
+Route::resource('product', ProductController::class);
+//Product Product Status
+Route::get('/{id},{command}', [ProductController::class, 'custom'])->name('product.custom');
+//Product Delete
+Route::get('delete-product/{id}', [ProductController::class, 'destroy'])->name('ProductController.destroy');
+
+//Category View
+Route::resource('category', CategoryController::class);
+//Category Delete
+Route::get('delete-category/{id}', [CategoryController::class, 'destroy'])->name('CategoryController.destroy');
+
+//Category View
+Route::resource('user', UserController::class);
+//Category Delete
+Route::get('delete-user/{id}', [UserController::class, 'destroy'])->name('User.destroy');
 
 Auth::routes();

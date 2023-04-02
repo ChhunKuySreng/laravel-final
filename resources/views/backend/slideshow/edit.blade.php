@@ -1,30 +1,31 @@
 @extends('layouts.backend.app')
 @section('content')
-    <form action="{{ route('slideshow.update', $slideshow->id) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <ul class="nav nav-tabs" id="myTab">
-                                <li class="nav-item">
-                                    <a href="#en" class="nav-link active" data-toggle="tab">English</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#kh" class="nav-link" data-toggle="tab">ខ្មែរ</a>
-                                </li>
-                            </ul>
-                            <div class="card-header">
-                                <div class="d-flex">
-                                    <h3 class="card-title flex-grow-1">Edit Slide Show</h3>
-                                    <a class="btn btn-primary" href="{{ url('slideshow') }}"><i
-                                            class="fas fa-arrow-left"></i> Back</a>
-                                </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <ul class="nav nav-tabs" id="myTab">
+                            <li class="nav-item">
+                                <a href="#en" class="nav-link active" data-toggle="tab">English</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#kh" class="nav-link" data-toggle="tab">ខ្មែរ</a>
+                            </li>
+                        </ul>
+                        <div class="card-header">
+                            <div class="d-flex">
+                                <h3 class="card-title flex-grow-1">Edit Slide Show</h3>
+                                <a class="btn btn-primary" href="{{ url('slideshow') }}"><i class="fas fa-arrow-left"></i>
+                                    Back</a>
                             </div>
-                            <div class="row">
-                                <div class="col-6">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <form action="{{ route('slideshow.update', $slideshow->id) }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
                                     <div class="tab-content">
                                         <div id="en" class="tab-pane fade show active">
                                             <div class="card-body">
@@ -130,16 +131,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-6">
-                                    <img style="display: block;margin: auto;width: 50%;" id="preview-image-before-upload"
-                                        src="/imageslideshow/{{ $slideshow->img }}" alt="{{ $slideshow->img }}">
-                                </div>
+                                </form>
+                            </div>
+                            <div class="col-6">
+                                <img style="display: block;margin: auto;width: 50%;" id="preview-image-before-upload"
+                                    src="/imageslideshow/{{ $slideshow->img }}" alt="{{ $slideshow->img }}">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </form>
+        </div>
+    </section>
 @endsection

@@ -76,6 +76,8 @@
         </div>
     </section>
 @endsection
+@section('header')
+@endsection
 @section('script')
     <script>
         $(function() {
@@ -85,8 +87,9 @@
                 "searching": true,
                 "ordering": true,
                 "info": true,
-                "autoWidth": false,
+                "autoWidth": true,
                 "responsive": true,
+                select: true,
             });
         });
     </script>

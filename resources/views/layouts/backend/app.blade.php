@@ -11,7 +11,7 @@
         crossorigin="anonymous" />
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
+    @yield('header')
     @stack('third_party_stylesheets')
 
     @stack('page_css')
