@@ -128,19 +128,4 @@ class ProductController extends Controller
         $product->delete();
         return redirect('product')->with('success','Product Delete Successfully.');
     }
-
-    // public function product()
-    // {
-    //     $products = ProductModel::orderBy('id', 'desc')->paginate(6);
-    //     return view('product.index', compact('products'));
-    // }
-    // public function productview($id)
-    // {
-    //     if(ProductModel::where('id',$id)->exists()){
-    //         $products = ProductModel::where('id',$id)->first();
-    //         return view('product.view', compact('products'));
-    //     }else{
-    //         return redirect('/')->with('status',"No Product");
-    //     }
-    // }
 }

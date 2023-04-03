@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,12 @@ use App\Http\Controllers\HomepageController;
 // Route::get('/', function () {
 //     return view('layouts.frontend.app');
 // });
+
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
+Route::get('/about', function () {
+    return view('frontend.about.index');
+});
+Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 
 Auth::routes();
 

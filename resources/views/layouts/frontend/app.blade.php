@@ -43,7 +43,8 @@
                             class="fab fa-linkedin fa-sm fa-fw"></i></a>
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="text-sm text-light text-decoration-none">Home</a>
+                            <a href="{{ url('/dashboard') }}" class="text-sm text-light text-decoration-none">
+                                Back to admin panel <i class="fas fa-arrow-right"></i></a>
                         @else
                             <a href="{{ route('login') }}" class="text-sm text-light text-decoration-none">Log in</a>
 
@@ -64,7 +65,7 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="{{route('homepage')}}">
                 Zay
             </a>
 

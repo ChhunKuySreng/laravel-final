@@ -17,7 +17,7 @@
                             <div class="card-header">
                                 <div class="d-flex">
                                     <h3 class="card-title flex-grow-1">Create Slide Show</h3>
-                                    <a class="btn btn-primary" href="{{url('slideshow')}}"><i
+                                    <a class="btn btn-primary" href="{{ url('slideshow') }}"><i
                                             class="fas fa-arrow-left"></i> Back</a>
                                 </div>
                             </div>
@@ -68,11 +68,11 @@
                                                         Show</label>
                                                     <div class="input-group">
                                                         <div class="custom-file">
-                                                            <input name="img" id="img" type="file"
+                                                            <input name="img" id="imginput" type="file"
                                                                 class="@error('img') is-invalid @enderror custom-file-input"
-                                                                accept="image/png, image/jpeg">
-                                                            <label class="custom-file-label" for="img">Choose
-                                                                file</label>
+                                                                accept="image/*">
+                                                            <label class="custom-file-label" id="imgname"
+                                                                for="img">Please select a file</label>
                                                         </div>
                                                     </div>
                                                     @error('img')
@@ -83,7 +83,8 @@
                                                 <div class="form-group">
                                                     <input type="hidden" name="enabled" value="0">
                                                     <input name="enabled" id="enabled" type="checkbox" value="1"
-                                                        {{ old('enabled', 0) === 0 ? 'checked' : '' }} data-bootstrap-switch>
+                                                        {{ old('enabled', 0) === 0 ? 'checked' : '' }}
+                                                        data-bootstrap-switch>
                                                     <label for="enabled" class="text-danger ml-2">Default Enabled Slide
                                                         Show</label>
                                                     <div class="ml-auto pt-3">
@@ -126,7 +127,7 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <img style="display: block;margin: auto;width: 50%;" id="preview-image-before-upload">
+                                    <img style="display: block;margin: auto;width: 50%;" id="img">
                                 </div>
                             </div>
                         </div>
@@ -135,4 +136,27 @@
             </div>
         </section>
     </form>
+@endsection
+@section('script')
+    <script>
+        imginput.onchange = evt => {
+            const [file] = imginput.files
+            if (file) {
+                img.src = URL.createObjectURL(file);
+            } else {
+                img.src = "";
+            }
+        }
+
+        let file = document.getElementById("imginput");
+        let message = document.getElementById("imgname");
+        file.addEventListener("input", () => {
+            if (file.files.length) {
+                let fileName = file.files[0].name;
+                message.innerHTML = `${fileName}`;
+            } else {
+                message.innerHTML = "Please select a file";
+            }
+        });
+    </script>
 @endsection

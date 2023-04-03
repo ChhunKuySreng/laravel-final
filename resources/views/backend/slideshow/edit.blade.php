@@ -72,10 +72,10 @@
                                                         Show</label>
                                                     <div class="input-group">
                                                         <div class="custom-file">
-                                                            <input name="img" id="img" type="file"
+                                                            <input name="img" id="imginput" type="file"
                                                                 class="@error('img') is-invalid @enderror custom-file-input"
                                                                 accept="image/png, image/jpeg">
-                                                            <label class="custom-file-label"
+                                                            <label class="custom-file-label" id="imgname"
                                                                 for="img">{{ $slideshow->img }}</label>
                                                         </div>
                                                     </div>
@@ -134,7 +134,7 @@
                                 </form>
                             </div>
                             <div class="col-6">
-                                <img style="display: block;margin: auto;width: 50%;" id="preview-image-before-upload"
+                                <img style="display: block;margin: auto;width: 50%;" id="img"
                                     src="/imageslideshow/{{ $slideshow->img }}" alt="{{ $slideshow->img }}">
                             </div>
                         </div>
@@ -143,4 +143,27 @@
             </div>
         </div>
     </section>
+@endsection
+@section('script')
+    <script>
+        imginput.onchange = evt => {
+            const [file] = imginput.files
+            if (file) {
+                img.src = URL.createObjectURL(file);
+            } else {
+                img.src = "";
+            }
+        }
+
+        let file = document.getElementById("imginput");
+        let message = document.getElementById("imgname");
+        file.addEventListener("input", () => {
+            if (file.files.length) {
+                let fileName = file.files[0].name;
+                message.innerHTML = `${fileName}`;
+            } else {
+                message.innerHTML = "Please select a file";
+            }
+        });
+    </script>
 @endsection
