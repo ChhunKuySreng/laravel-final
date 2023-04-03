@@ -22,7 +22,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the application product.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */

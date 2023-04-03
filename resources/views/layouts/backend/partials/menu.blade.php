@@ -1,5 +1,11 @@
 <!-- need to remove -->
 <li class="nav-item">
+    <a href="{{ route('homepage') }}" class="nav-link">
+        <i class="nav-icon fas fa-house"></i>
+        <p>WebPage</p>
+    </a>
+</li>
+<li class="nav-item">
     <a href="{{ route('dashboard') }}" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">
         <i class="nav-icon fas fa-chart-line"></i>
         <p>Dashboard</p>

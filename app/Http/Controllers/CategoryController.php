@@ -18,7 +18,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the application category.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */

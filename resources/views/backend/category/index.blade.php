@@ -49,7 +49,7 @@
         </div>
     </section>
 @endsection
-@section('header')
+@section('head')
 @endsection
 @section('script')
     <script>

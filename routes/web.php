@@ -7,6 +7,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 
+use App\Http\Controllers\HomepageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,9 +20,12 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('layouts.frontend.app');
+// });
+Route::get('/', [HomepageController::class, 'index'])->name('homepage');
+
+Auth::routes();
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -48,4 +53,4 @@ Route::resource('user', UserController::class);
 //Category Delete
 Route::get('delete-user/{id}', [UserController::class, 'destroy'])->name('User.destroy');
 
-Auth::routes();
+

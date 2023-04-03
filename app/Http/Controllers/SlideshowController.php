@@ -19,7 +19,7 @@ class SlideshowController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the application slideshow.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
