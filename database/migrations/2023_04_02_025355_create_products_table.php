@@ -23,8 +23,8 @@ return new class extends Migration
             $table->unsignedInteger('prod_qty');
             $table->string('img', 500);
             $table->boolean('prod_status')->default(0);
-            $table->integer('cat_id');
-            $table->foreign('cat_id')->references('cat_id')->on('categories');
+            $table->biginteger('sub_cat_id');
+            $table->foreign('sub_cat_id')->references('id')->on('subcategories');
             $table->timestamps ();
         });
     }

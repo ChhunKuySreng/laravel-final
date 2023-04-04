@@ -22,11 +22,11 @@
                             </div>
                             <div class="col-lg-6 mb-0 d-flex align-items-center">
                                 <div class="text-align-left align-self-center">
-                                    <h1 class="h1 text-success">{{ $slideshow->title_en }}</h1>
-                                    <h3 class="h2">{{ $slideshow->subtitle_en }}</h3>
-                                    <p>{{ $slideshow->text_en }}</p>
-                                    <a class="btn btn-outline-success py-2 px-4 mt-3" href="{{ $slideshow->link }}">Shop
-                                        Now</a>
+                                    <h1 class="h1 text-success">{{ $slideshow['title_' . __('messages.slideshow')] }}</h1>
+                                    <h3 class="h2">{{ $slideshow['subtitle_' . __('messages.slideshow')] }}</h3>
+                                    <p>{{ $slideshow['text_' . __('messages.slideshow')] }}</p>
+                                    <a class="btn btn-outline-success py-2 px-4 mt-3"
+                                        href="{{ $slideshow->link }}">{{ __('messages.shopnow') }}</a>
                                 </div>
                             </div>
                         </div>

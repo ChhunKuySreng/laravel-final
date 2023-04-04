@@ -74,18 +74,18 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="cat_id" class="form-label">Product Category</label>
-                                            <select name="cat_id" id="cat_id"
-                                                class="@error('cat_id') is-invalid @enderror custom-select rounded-1">
-                                                <option selected="true" disabled="disabled">Select Category</option>
-                                                @foreach ($categories as $category)
-                                                    <option value="{{ $category->cat_id }}"
-                                                        {{ $category->cat_id == $category->id ? 'selected' : '' }}>
-                                                        {{ $category->cat_name }}</option>
+                                            <label for="sub_cat_id" class="form-label">Product Sub Category</label>
+                                            <select name="sub_cat_id" id="sub_cat_id"
+                                                class="@error('sub_cat_id') is-invalid @enderror custom-select rounded-1">
+                                                <option selected="true" disabled="disabled">Select Sub Category</option>
+                                                @foreach ($subcategories as $subcategory)
+                                                    <option value="{{ $subcategory->id }}"
+                                                        {{ $product->sub_cat_id == $subcategory->id ? 'selected' : '' }}>
+                                                        {{ $subcategory->sub_cat_name }}</option>
                                                 @endforeach
                                             </select>
-                                            @error('cat_id')
-                                                <div class="alert alert-danger">Please Choose Category</div>
+                                            @error('sub_cat_id')
+                                                <div class="alert alert-danger">Please Choose Sub Category</div>
                                             @enderror
                                         </div>
                                         <div class="form-group">

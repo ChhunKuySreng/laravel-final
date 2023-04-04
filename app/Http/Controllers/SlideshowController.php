@@ -152,6 +152,6 @@ class SlideshowController extends Controller
             File::delete($image_path);
         }
         $slideshow->delete();
-        return redirect('slideshow');
+        return redirect('slideshow')->with('success', 'Slideshow Delete Successfully.');
     }
 }

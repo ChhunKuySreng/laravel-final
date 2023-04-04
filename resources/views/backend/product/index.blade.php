@@ -4,6 +4,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex">
@@ -23,7 +28,7 @@
                                         <th>Product Quantity</th>
                                         <th>Product Price</th>
                                         <th>Product Barcode</th>
-                                        <th>Product Category</th>
+                                        <th>Sub Category</th>
                                         <th>Product Image</th>
                                         <th>Action</th>
                                     </tr>
@@ -41,13 +46,14 @@
                                                 <img src="data::image/png;base64,{{ DNS1D::getBarcodePNG($product->prod_barcode, 'C39') }}"
                                                     height="60" width="180" />
                                             </td>
-                                            @foreach ($categories as $category)
-                                                @if ($category->cat_id == $product->cat_id)
-                                                    <td>{{ $category->cat_name }}</td>
+                                            @foreach ($subcategories as $subcategory)
+                                                @if ($subcategory->id == $product->sub_cat_id)
+                                                    <td>{{ $subcategory->sub_cat_name }}</td>
                                                 @endif
                                             @endforeach
                                             <td style="width: 5%"><img class="img-fluid img-thumbnail"
-                                                    src="/imageproduct/{{ $product->img }}" alt="{{ $product->img }}"></td>
+                                                    src="/imageproduct/{{ $product->img }}" alt="{{ $product->img }}">
+                                            </td>
                                             <td style="width: 10%">
                                                 <a href="{{ route('product.edit', $product->id) }}">
                                                     <i class="fas fa-pen-to-square mx-1"></i>

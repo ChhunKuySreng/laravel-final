@@ -4,11 +4,16 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex">
-                                <h3 class="card-title flex-grow-1">Slideshow List</h3>
-                                <a class="btn btn-primary" href="{{ route('category.create') }}">Add Slide Show</a>
+                                <h3 class="card-title flex-grow-1">Category List</h3>
+                                <a class="btn btn-primary" href="{{ route('category.create') }}">Add Category</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -17,7 +22,6 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Category ID</th>
                                         <th>Category Name</th>
                                         <th>Category Description</th>
                                         <th>Action</th>
@@ -27,7 +31,6 @@
                                     @foreach ($categories as $category)
                                         <tr>
                                             <th>{{ $loop->iteration }}</th>
-                                            <td>{{ $category->cat_id }}</td>
                                             <td>{{ $category->cat_name }}</td>
                                             <td>{{ $category->cat_description }}</td>
                                             <td>

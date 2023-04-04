@@ -46,14 +46,33 @@
                             <a href="{{ url('/dashboard') }}" class="text-sm text-light text-decoration-none">
                                 Back to admin panel <i class="fas fa-arrow-right"></i></a>
                         @else
-                            <a href="{{ route('login') }}" class="text-sm text-light text-decoration-none">Log in</a>
+                            <a href="{{ route('login') }}" class="text-sm text-light text-decoration-none">{{__('messages.login')}}</a>
 
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}"
-                                    class="ml-4 text-sm text-light text-decoration-none">Register</a>
+                                    class="ml-4 text-sm text-light text-decoration-none">{{__('messages.register')}}</a>
                             @endif
                         @endauth
                     @endif
+                    <div class="ml-5 btn-group">
+                        <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <span
+                                class="flag-icon flag-icon-{{ Config::get('languages')[App::getLocale()]['flag-icon'] }}"></span> {{ Config::get('languages')[App::getLocale()]['display'] }}
+                        </a>
+                        </a>
+                        <ul class="dropdown-menu">
+                            @foreach (Config::get('languages') as $lang => $language)
+                                @if ($lang != App::getLocale())
+                                    <li><a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
+                                            <span class="flag-icon flag-icon-{{ $language['flag-icon'] }}"></span>
+                                            {{ $language['display'] }}
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,7 +84,7 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="{{route('homepage')}}">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="{{ route('homepage') }}">
                 Zay
             </a>
 
@@ -241,6 +260,7 @@
     <script src="{{ asset('assets/js/templatemo.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <!-- End Script -->
+    @yield('script')
 </body>
 
 </html>

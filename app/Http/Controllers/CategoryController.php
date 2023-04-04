@@ -36,11 +36,9 @@ class CategoryController extends Controller
     protected function store(Request $request, CategoryModel $category)
     {
         $request->validate([
-            'cat_id'=>'required',
             'cat_name'=>'required',
         ]);
         $category = new CategoryModel();
-        $category->cat_id = $request->cat_id;
         $category->cat_name = $request->cat_name;
         $category->cat_description = $request->cat_description;
         $category->save();
@@ -56,10 +54,8 @@ class CategoryController extends Controller
     protected function update(Request $request, CategoryModel $category)
     {
         $request->validate([
-            'cat_id'=>'required',
             'cat_name'=>'required',
         ]);
-        $category->cat_id = $request->cat_id;
         $category->cat_name = $request->cat_name;
         $category->cat_description = $request->cat_description;
         $category->save();
@@ -69,6 +65,6 @@ class CategoryController extends Controller
     protected function destroy($id)
     {
         $category = CategoryModel::where('id', $id)->delete();
-        return redirect('category');
+        return redirect('category')->with('success','Category Delete Successfully.');
     }
 }

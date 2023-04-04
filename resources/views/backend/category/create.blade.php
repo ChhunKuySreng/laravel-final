@@ -18,15 +18,6 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="cat_id" class="form-label">Category ID</label>
-                                            <input name="cat_id" id="cat_id" type="text"
-                                                class="@error('cat_id') is-invalid @enderror form-control"
-                                                placeholder="Enter Category ID">
-                                            @error('cat_id')
-                                                <div class="alert alert-danger">Please Input Category ID</div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
                                             <label for="cat_name" class="form-label">Category Name</label>
                                             <input name="cat_name" id="cat_name" type="text"
                                                 class="@error('cat_name') is-invalid @enderror form-control"

@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,9 @@ Route::get('/about', function () {
     return view('frontend.about.index');
 });
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
-
+Route::get('/contact', function () {
+    return view('frontend.contact.index');
+});
 Auth::routes();
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -54,9 +57,15 @@ Route::resource('category', CategoryController::class);
 //Category Delete
 Route::get('delete-category/{id}', [CategoryController::class, 'destroy'])->name('CategoryController.destroy');
 
+//SubCategory View
+Route::resource('subcategory', SubCategoryController::class);
+//SubCategory Delete
+Route::get('delete-subcategory/{id}', [SubCategoryController::class, 'destroy'])->name('SubCategoryController.destroy');
+
 //Category View
 Route::resource('user', UserController::class);
 //Category Delete
 Route::get('delete-user/{id}', [UserController::class, 'destroy'])->name('User.destroy');
 
-
+//SwitchLang
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);

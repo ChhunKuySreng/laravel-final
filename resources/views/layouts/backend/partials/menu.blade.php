@@ -23,11 +23,25 @@
         <p>Product</p>
     </a>
 </li>
-<li class="nav-item">
-    <a href="{{ url('category') }}" class="nav-link {{ Request::is('category') ? 'active' : '' }}">
+<li class="nav-item {{ Request::is('category')||Request::is('subcategory') ? 'menu-open' : '' }}">
+    <a href="#" class="nav-link {{ Request::is('category')||Request::is('subcategory') ? 'active' : '' }}">
         <i class="nav-icon fas fa-list"></i>
-        <p>Category</p>
+        <p>Menu Category<i class="right fas fa-angle-left"></i></p>
     </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{{ url('category') }}" class="nav-link {{ Request::is('category') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Category</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ url('subcategory') }}" class="nav-link {{ Request::is('subcategory') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Sub Category</p>
+            </a>
+        </li>
+    </ul>
 </li>
 <li class="nav-item">
     <a href="{{ url('user') }}" class="nav-link {{ Request::is('user') ? 'active' : '' }}">

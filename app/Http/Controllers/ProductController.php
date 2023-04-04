@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SubCategoryModel;
 use App\Models\CategoryModel;
 use App\Models\ProductModel;
 use Illuminate\Support\Facades\DB;
@@ -28,15 +29,16 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $categories = CategoryModel::select(array('cat_id','cat_name'))->get();
+        $subcategories = SubCategoryModel::select(array('id','sub_cat_name'))->get();
         $products = ProductModel::orderBy('id', 'desc')->get();
-        return view('backend.product.index', compact(['products','categories']));
+        return view('backend.product.index', compact(['products','subcategories']));
     }
 
     public function create()
     {
-        $categories = CategoryModel::select(array('cat_id','cat_name'))->get();
-        return view('backend.product.create', compact('categories'));
+        $categories = CategoryModel::select(array('id','cat_name'))->get();
+        $subcategories = SubCategoryModel::select(array('id','sub_cat_name'))->get();
+        return view('backend.product.create', compact(['subcategories','categories']));
     }
 
     public function store(Request $request, ProductModel $product)
@@ -46,7 +48,7 @@ class ProductController extends Controller
             'prod_description'=>'required',
             'prod_qty'=>'required',
             'prod_price'=>'required',
-            'cat_id'=>'required',
+            'sub_cat_id'=>'required',
             'img'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ]);
         // $input = $request->all();
@@ -56,7 +58,7 @@ class ProductController extends Controller
         $product->prod_size = $request->prod_size;
         $product->prod_qty = $request->prod_qty;
         $product->prod_price = $request->prod_price;
-        $product->cat_id = $request->cat_id;
+        $product->sub_cat_id = $request->sub_cat_id;
         $product->prod_status = $request->prod_status;
         $product->prod_barcode = ProductModel::max('prod_barcode') + $productCode = rand(1234567890,50);
         if ($request->hasFile('img')) {
@@ -73,9 +75,9 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $categories = CategoryModel::all();
+        $subcategories = SubCategoryModel::all();
         $product = ProductModel::find($id);
-        return view('backend.product.edit', compact(['product','categories']));
+        return view('backend.product.edit', compact(['product','subcategories']));
     }
 
     public function update(Request $request, ProductModel $product)
@@ -85,7 +87,7 @@ class ProductController extends Controller
             'prod_description'=>'required',
             'prod_qty'=>'required',
             'prod_price'=>'required',
-            'cat_id'=>'required',
+            'sub_cat_id'=>'required',
             'img'=>'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ]);
         $input = $request->all();
