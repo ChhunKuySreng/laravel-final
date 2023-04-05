@@ -12,13 +12,13 @@ class ShopController extends Controller
         $products = ProductModel::orderBy('id', 'desc')->paginate(3);
         return view('frontend.shop.index', compact('products'));
     }
-    // public function productview($id)
-    // {
-    //     if(ProductModel::where('id',$id)->exists()){
-    //         $products = ProductModel::where('id',$id)->first();
-    //         return view('product.view', compact('products'));
-    //     }else{
-    //         return redirect('/')->with('status',"No Product");
-    //     }
-    // }
+    public function productview($id)
+    {
+        if(ProductModel::where('id',$id)->exists()){
+            $products = ProductModel::where('id',$id)->first();
+            return view('frontend.shop.view', compact('products'));
+        }else{
+            return redirect('/')->with('status',"No Product");
+        }
+    }
 }

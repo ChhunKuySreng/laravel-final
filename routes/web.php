@@ -31,6 +31,7 @@ Route::get('/about', function () {
     return view('frontend.about.index');
 });
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+Route::get('shop/{id}', [ShopController::class, 'productview']);
 Route::get('/contact', function () {
     return view('frontend.contact.index');
 });
@@ -47,6 +48,7 @@ Route::get('delete-slideshow/{id}', [SlideshowController::class, 'destroy'])->na
 
 //Product View
 Route::resource('product', ProductController::class);
+
 //Product Product Status
 Route::get('/{id},{command}', [ProductController::class, 'custom'])->name('product.custom');
 //Product Delete

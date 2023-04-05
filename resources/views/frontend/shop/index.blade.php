@@ -77,7 +77,7 @@
                                             <li><a class="btn btn-success text-white" href="shop-single.html"><i
                                                         class="far fa-heart"></i></a></li>
                                             <li><a class="btn btn-success text-white mt-2"
-                                                    href="{{ URL('product/' . $product->id) }}"><i class="far fa-eye"></i></a>
+                                                    href="{{ URL('shop/' . $product->id) }}"><i class="far fa-eye"></i></a>
                                             </li>
                                             <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
                                                         class="fas fa-cart-plus"></i></a></li>
